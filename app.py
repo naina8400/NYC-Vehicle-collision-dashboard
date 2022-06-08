@@ -39,15 +39,12 @@ def load_data(nrows):
 
 data = load_data(100000)
 original_data = data
-dataset_old1=load_data(100000)
-dataset_old=pd.DataFrame(dataset_old1.iloc[:,1:22])
 
 ###Adding the Category column###
+# dat_cat = pd.DataFrame(dataset_old.iloc[:,10:16].idxmax(axis=1,skipna=True),columns=['category'])
+# col = [dataset_old,dat_cat]
+# dataset = pd.concat(col,axis=1)
 
-
-dat_cat = pd.DataFrame(dataset_old.iloc[:,10:16].idxmax(axis=1,skipna=True),columns=['category'])
-col = [dataset_old,dat_cat]
-dataset = pd.concat(col,axis=1)
 
 st.header("Where are the most people injured in NYC?")
 injured_people = st.slider("Number of persons injured in collision  💥 🚗", 0, 19)
@@ -92,30 +89,21 @@ chart_data = pd.DataFrame({'minute': range(60), 'crashes':hist})
 fig = px.bar(chart_data, x='minute', y='crashes', hover_data=['minute', 'crashes'], height=400)
 st.write(fig)
 
-st.header(" Area and Category wise Analysis ") 
+#### PIE GRAPH FOR BOROUGH AND CATEGORY ####
+
+st.markdown("### Data Analysis by Piegraph ") 
 st.write("*This section will help you understand the specific areas of NYC with" 
-    "the most number of accidents in the entire dataset along with category wise distribution.*")
-pidata1 = dataset['borough'].value_counts()
+    "the most number of accidents in the entire dataset*")
+pidata1 = data['borough'].value_counts()
 pie_frame1 = pd.Series.to_frame(pidata1)
 pie_frame1['Name'] = list(pie_frame1.index)
     #st.write(pie_frame1)
 fig = px.pie(pie_frame1, values="borough",names="Name", title="Long-Form Input")
-    #st.write(fig)
-pidata2 =dataset['category'].value_counts()
-pie_frame2 =pd.Series.to_frame(pidata2)
-pie_frame2['Name']=list(pie_frame2.index)
-    #st.write(pie_frame2)
-fig = go.Figure()
-fig = make_subplots(rows=1, cols=3, specs=[[{'type':'domain'}, {'type':'domain'},  {'type':'domain'}]],
-            subplot_titles=['Area Wise Count',' ','Category Wise Count'])
-
+ 
 fig.add_trace(go.Pie(labels=pie_frame1['Name'], values=pie_frame1['borough'], name="Area Wise Count",showlegend=False,
             textinfo='label+percent',insidetextorientation='radial',
+            marker=dict(colors=[ 'palevioletred', 'papayawhip', 'peachpuff', 'peru', 'pink']),
             ),1, 1)
-
-fig.add_trace(go.Pie(labels=pie_frame2['Name'], values=pie_frame2['category'], name="Category Wise Count",
-            showlegend=False,textinfo='label+percent',insidetextorientation='radial',
-            ),1, 3)
 
 fig.update_layout(margin=dict(l=0, r=0, t=0, b=0))
 fig.update_traces(hole=.4, hoverinfo="label+percent+name")
@@ -131,8 +119,6 @@ fig.update_layout(
        
     ))
 st.write(fig)
-
-
 ### BAR GRAPH FOR DANGEORUS STREETS ###
     
 
@@ -156,7 +142,7 @@ else:
     st.write(original_data.query("injured_motorists >= 1")[["on_street_name", "injured_motorists"]].sort_values(by=['injured_motorists'], ascending=False).dropna(how="any")[:5])
 
 
+
 if st.checkbox("Show Raw Data", False):
     st.subheader('Raw Data')
     st.write(data)
-
