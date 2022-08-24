@@ -1,6 +1,6 @@
 # NYC Vehicle Collision Analysis and Vizualization
 
-![homepic](https://user-images.githubusercontent.com/66205648/181935546-2f49a4d1-89b0-463a-98ba-f6d794191241.png)
+![homepic](https://user-images.githubusercontent.com/66205648/186534991-ea3796bb-8a20-4a7c-ae76-4f186bef1858.jpg)
 New York State is the fourth largest state in the United States of America based on our latest projections.New York State has an overall population density of 421 people per square mile, with an area of 47,126 square miles. When most people think of New York, they immediately think of New York City, the largest city in the US. The website aims at providing you an insight about new york's traffic and the motor vehicle collision accidents through a map overview
 
 ### Datasets : [Dataset link](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95)
