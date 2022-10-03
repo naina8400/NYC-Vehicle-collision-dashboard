@@ -19,7 +19,7 @@ Turn on to make this app occupy the entire width of the screen. Settings>Wide mo
 - ![pic12](https://user-images.githubusercontent.com/66205648/181935976-5517e248-8d84-4e3d-83b6-755a55f12dd8.png)
 
 
-### Time Series Analysis
+### Time Analysis
 - ![pic13](https://user-images.githubusercontent.com/66205648/181936063-4100f018-d239-4f03-ae8d-3d44a879cf2f.png)
 
 - ![pic5](https://user-images.githubusercontent.com/66205648/181936099-824cdf1f-1299-498b-b8b7-c8670ee41025.png)
